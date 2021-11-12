@@ -6,10 +6,10 @@ function App() {
     <div className="App">
       <h1>Test 80</h1>
       <nav>
-        <Link to="/">Home</Link> |{" "}
-        <Link to="/food">Home</Link> |{" "}
-        <Link to="/large">Home</Link> |{" "}
-        <Link to="/small">Home</Link> |{" "}
+      <Link to="/">Home</Link> |{" "}
+        <Link to="/large">Large</Link> |{" "}
+        <Link to="/small">Small</Link> |{" "}
+        <Link to="/about">About</Link> |{" "}
       </nav>
       <Outlet />
     </div>
