@@ -1,5 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './index.css';
 import App from './App';
@@ -7,21 +10,25 @@ import Large from './components/largest';
 import Small from './components/smallest';
 import About from './components/about';
 
-{/* <App /> */}
+// Connect to Redux DevTools
+let reduxDevTools = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+
 
 ReactDOM.render(
-  <BrowserRouter>
-    <Routes>
-      {/* Routes go here */}
-      <Route path="/" element={<App />}>
-        <Route path="large" element={<Large />}/>
-        <Route path="small" element={<Small />}/>
-        <Route path="large" element={<Large />}/>
-        <Route path="about" element={<About />}/>
-        <Route path="*" element={<main><p>There's nothing here!</p></main>}/>
-      </Route>
-    </Routes>
-  </BrowserRouter>,
+  <Provider>
+    <BrowserRouter>
+      <Routes>
+        {/* Routes go here */}
+        <Route path="/" element={<App />}>
+          <Route path="large" element={<Large />}/>
+          <Route path="small" element={<Small />}/>
+          <Route path="large" element={<Large />}/>
+          <Route path="about" element={<About />}/>
+          <Route path="*" element={<main><p>There's nothing here!</p></main>}/>
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  </Provider>,
 document.getElementById('root')
 );
 
