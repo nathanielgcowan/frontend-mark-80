@@ -1,9 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default function Food() {
-    return (
-      <main>
-        <h2>Food</h2>
-      </main>
-    );
-  }
+let Food = (props) => {
+  return (
+    <div></div>
+  )
+}
+
+export default Food;
+
+// stateless component
+// functional component to render the food items

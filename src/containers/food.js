@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchFood } from '../actions/foodActions';
+import FoodCard from '../components/food';
 // connects you to the store
 import Addfood from './addfood'
 // Container Component
@@ -11,25 +12,23 @@ class Food extends Component {
     componentDidMount() {
         this.props.fetchFood();
     }
+    // Dispatch - store - fetch food | props connects to store
 
-    getDerivedStateFromProp(nextProps) {
-        if (nextProps.newFood) {
-            this.props.foods.unshift(nextProps.newFood);
-        }
-    }
-    // Food iteration
-    // Container Component Props to Child Component
-    render() {
-        let foodItems = this.props.foods.map(food => (
-            <div key={food.id}>
+    // Food iteration // Container Component Props to Child Component
+    foodItems = () => this.props.foods.map(food => (
+        <div key={food.id}>
             <h3>{food.name}</h3>
             <p>{food.amount}</p>
-        </div>));
+        </div>
+    ));
+    
+    render() {
         return (
             <div>
+                <p><FoodCard /></p>
                 <h3><Addfood /></h3>
                 <h1>Food Container</h1>
-                { foodItems }
+                { this.foodItems() }
             </div>
         )
     }
@@ -41,6 +40,7 @@ Food.propTypes = {
     newFood: PropTypes.object
 };
 
+// State props from store
 const mapStateToProps = state => ({
     foods: state.foods.foods,
     newFood: state.foods.food
