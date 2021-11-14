@@ -1,28 +1,26 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { fetchFood } from '../actions/foodActions';
 // connects you to the store
 import Addfood from './addfood'
 // Container Component
 class Food extends Component {
     
-    constructor(props) {
-        super(props);
-        this.state = {
-            food: []
-        };
-    }
-
     // On dom load. Bring in existing food on list.
     componentDidMount() {
-        fetch('http://localhost:3001/foods')
-            .then(response => response.json())
-            .then(data => this.setState({food: data}));
+        this.props.fetchFood();
     }
 
+    getDerivedStateFromProp(nextProps) {
+        if (nextProps.newFood) {
+            this.props.foods.unshift(nextProps.newFood);
+        }
+    }
     // Food iteration
     // Container Component Props to Child Component
     render() {
-        let foodItems = this.state.food.map(food => (
+        let foodItems = this.props.foods.map(food => (
             <div key={food.id}>
             <h3>{food.name}</h3>
             <p>{food.amount}</p>
@@ -37,4 +35,15 @@ class Food extends Component {
     }
 }
 
-export default Food;
+Food.propTypes = {
+    fetchFood: PropTypes.func.isRequired,
+    foods: PropTypes.array.isRequired,
+    newFood: PropTypes.object
+};
+
+const mapStateToProps = state => ({
+    foods: state.foods.foods,
+    newFood: state.foods.food
+})
+
+export default connect(mapStateToProps, { fetchFood })(Food);

@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { newFood } from '../actions/foodActions';
 
 class Addfood extends Component {
     constructor(props) {
@@ -19,11 +22,8 @@ class Addfood extends Component {
     onSubmit(e) {
         e.preventDefault();
         let food = { name: this.state.name, amount: this.state.amount }
-        fetch('http://localhost:3001/foods', {
-            method: 'POST', headers: { 'Content-Type':'application/json'},
-            body: JSON.stringify(food) })
-        .then(response => response.json())
-        .then(data => console.log(data)) }
+        this.props.newFood(food);
+    }
 
 
     render() {
@@ -46,4 +46,8 @@ class Addfood extends Component {
     }
 }
 
-export default Addfood;
+Addfood.propTypes = {
+    newFood: PropTypes.func.isRequired,
+}
+
+export default connect(null, { newFood })(Addfood);

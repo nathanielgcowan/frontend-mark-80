@@ -12,6 +12,7 @@ import Large from './components/largest';
 import Small from './components/smallest';
 import About from './components/about';
 
+// Redux DevTools
 let reduxDevTools = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 let store = createStore(rootReducer, reduxDevTools(applyMiddleware(thunk)));
 
