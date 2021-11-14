@@ -1,5 +1,6 @@
 import { FETCH_FOOD, NEW_FOOD } from './types.js';
 
+// thunk allows us to make async requests
 export const fetchFood = () => dispatch => {
     // Fetch requst will go here.
     fetch('http://localhost:3001/foods')

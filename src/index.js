@@ -17,6 +17,7 @@ let store = createStore(rootReducer, reduxDevTools(applyMiddleware(thunk)));
 
 ReactDOM.render(
   <Provider store={store}>
+  {/* // store holds the state */}
     <Router>
       <Routes>
         {/* Routes go here */}
