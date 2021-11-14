@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux';
+// connects you to the store
 import Addfood from './addfood'
 // Container Component
 class Food extends Component {
@@ -20,7 +22,8 @@ class Food extends Component {
     // Food iteration
     // Container Component Props to Child Component
     render() {
-        let foodItems = this.state.food.map(food => ( <div key={food.id}>
+        let foodItems = this.state.food.map(food => (
+            <div key={food.id}>
             <h3>{food.name}</h3>
             <p>{food.amount}</p>
         </div>));
