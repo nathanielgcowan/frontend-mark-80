@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import rootReducer from './reducers/index';
 import './index.css';
 import App from './App';
+import Food from './containers/food';
 import Large from './components/largest';
 import Small from './components/smallest';
 import About from './components/about';
@@ -20,7 +21,7 @@ ReactDOM.render(
       <Routes>
         {/* Routes go here */}
         <Route path="/" element={<App />}>
-          <Route path="large" element={<Large />}/>
+          <Route path="food" element={<Food />}/>
           <Route path="small" element={<Small />}/>
           <Route path="large" element={<Large />}/>
           <Route path="about" element={<About />}/>

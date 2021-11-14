@@ -5,6 +5,7 @@ export default function NavBar() {
         <div className="nav-bar">
             <nav>
                 <Link to="/">Home</Link> |{" "}
+                <Link to="/food">Food List</Link> |{" "}
                 <Link to="/large">Large</Link> |{" "}
                 <Link to="/small">Small</Link> |{" "}
                 <Link to="/about">About</Link> |{" "}

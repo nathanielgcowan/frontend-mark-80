@@ -14,5 +14,5 @@ export const newFood = foodData => dispatch => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(foodData) })
     .then(response => response.json())
-    .then(data => dispatch({type: NEW_POST, payload: food }) );
+    .then(food => dispatch({type: NEW_FOOD, payload: food }) );
 };
